@@ -1,398 +1,459 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Semakan Markah Peperiksaan</title>
-<style>
-:root {
---primary-color: #2c3e50;
---secondary-color: #3498db;
---accent-color: #e74c3c;
---bg-color: #f4f7f6;
---card-bg: #ffffff;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Semakan Markah Peperiksaan</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+        }
 
-* {
-box-sizing: border-box;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin: 0;
-padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-background-color: var(--bg-color);
-color: #333;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-}
+        body {
+            background-color: var(--bg-color);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-header {
-width: 100%;
-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-color: white;
-padding: 20px;
-text-align: center;
-box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+        header {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-.container {
-width: 90%;
-max-width: 900px;
-margin: 30px auto;
-}
+        .container {
+            width: 90%;
+            max-width: 950px;
+            margin: 30px auto;
+        }
 
-.nav-tabs {
-display: flex;
-justify-content: center;
-gap: 10px;
-margin-bottom: 20px;
-}
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-.tab-btn {
-padding: 12px 24px;
-border: none;
-background-color: #ddd;
-color: #333;
-font-weight: bold;
-border-radius: 8px;
-cursor: pointer;
-transition: 0.3s;
-}
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background-color: #ddd;
+            color: #333;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.tab-btn.active {
-background-color: var(--secondary-color);
-color: white;
-}
+        .tab-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
 
-.card {
-background-color: var(--card-bg);
-padding: 30px;
-border-radius: 12px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-display: none;
-}
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: none;
+        }
 
-.card.active {
-display: block;
-}
+        .card.active {
+            display: block;
+        }
 
-.form-group {
-margin-bottom: 20px;
-}
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-label {
-display: block;
-margin-bottom: 8px;
-font-weight: 600;
-}
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
 
-input[type="text"], input[type="password"], select {
-width: 100%;
-padding: 12px;
-border: 1px solid #ccc;
-border-radius: 6px;
-font-size: 16px;
-}
+        input[type="text"], input[type="password"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
 
-input[type="text"] {
-text-transform: uppercase;
-}
+        input[type="text"] {
+            text-transform: uppercase;
+        }
 
-button.btn-submit {
-width: 100%;
-padding: 12px;
-background-color: var(--secondary-color);
-color: white;
-border: none;
-border-radius: 6px;
-font-size: 16px;
-font-weight: bold;
-cursor: pointer;
-transition: 0.3s;
-}
+        button.btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-button.btn-submit:hover {
-background-color: #2980b9;
-}
+        button.btn-submit:hover {
+            background-color: #2980b9;
+        }
 
-.result-box {
-margin-top: 25px;
-padding: 20px;
-border-radius: 8px;
-background-color: #f8f9fa;
-border-left: 5px solid var(--secondary-color);
-display: none;
-}
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--secondary-color);
+            display: none;
+        }
 
-.result-header {
-font-size: 18px;
-font-weight: bold;
-margin-bottom: 15px;
-color: var(--primary-color);
-}
+        .result-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
 
-table {
-width: 100%;
-border-collapse: collapse;
-margin-top: 15px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
 
-th, td {
-border: 1px solid #ddd;
-padding: 10px;
-text-align: center;
-}
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
 
-th {
-background-color: var(--primary-color);
-color: white;
-}
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
 
-.grade-badge {
-display: inline-block;
-padding: 4px 12px;
-border-radius: 20px;
-background-color: #27ae60;
-color: white;
-font-weight: bold;
-}
+        .grade-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background-color: #27ae60;
+            color: white;
+            font-weight: bold;
+        }
 
-.error-msg {
-color: var(--accent-color);
-margin-top: 10px;
-font-weight: bold;
-}
-</style>
+        .error-msg {
+            color: var(--accent-color);
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>Portal Semakan Markah Peperiksaan</h1>
-<p>Sistem Semakan Keputusan Peperiksaan Pelajar</p>
-</header>
+    <header>
+        <h1>Portal Semakan Markah Peperiksaan</h1>
+        <p>Sistem Semakan Keputusan Peperiksaan Pelajar & Analisis Guru</p>
+    </header>
 
-<div class="container">
-<!-- Navigation Tabs -->
-<div class="nav-tabs">
-<button class="tab-btn active" onclick="switchTab('pelajar')">Log Masuk Pelajar</button>
-<button class="tab-btn" onclick="switchTab('guru')">Log Masuk Guru</button>
-</div>
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('pelajar')">Log Masuk Pelajar</button>
+            <button class="tab-btn" onclick="switchTab('guru')">Log Masuk Guru</button>
+        </div>
 
-<!-- Section Pelajar -->
-<div id="section-pelajar" class="card active">
-<h2>Semakan Markah Murid</h2>
-<hr style="margin: 15px 0;"><br>
+        <!-- Section Pelajar -->
+        <div id="section-pelajar" class="card active">
+            <h2>Semakan Markah Murid</h2>
+            <hr style="margin: 15px 0;"><br>
+            
+            <div class="form-group">
+                <label for="student-name">Nama Penuh Pelajar (HURUF BESAR) mengikut Kad Pengenalan:</label>
+                <input type="text" id="student-name" placeholder="CONTOH: ADELIA BINTI MOHAMAD ANIM">
+            </div>
 
-<div class="form-group">
-<label for="student-name">Nama Penuh Pelajar (HURUF BESAR):</label>
-<input type="text" id="student-name" placeholder="CONTOH: ADELIA BINTI MOHAMAD ANIM">
-</div>
+            <div class="form-group">
+                <label for="exam-select">Pilih Peperiksaan:</label>
+                <select id="exam-select">
+                    <option value="ALL">-- Semua Peperiksaan --</option>
+                    <option value="PPT T4">PPT T4 (Pentaksiran Pertengahan Tahun T4)</option>
+                    <option value="PAT T4">PAT T4 (Pentaksiran Akhir Tahun T4)</option>
+                    <option value="PPT">PPT (Pentaksiran Pertengahan Tahun T5)</option>
+                    <option value="SPMC">SPMC (Percubaan SPM)</option>
+                </select>
+            </div>
 
-<div class="form-group">
-<label for="exam-select">Pilih Peperiksaan:</label>
-<select id="exam-select">
-<option value="ALL">-- Semua Peperiksaan --</option>
-<option value="PPT T4">PPT T4 (Pentaksiran Pertengahan Tahun T4)</option>
-<option value="PAT T4">PAT T4 (Pentaksiran Akhir Tahun T4)</option>
-<option value="PPT">PPT (Pentaksiran Pertengahan Tahun T5)</option>
-<option value="SPMC">SPMC (Percubaan SPM)</option>
-</select>
-</div>
+            <button class="btn-submit" onclick="checkStudentMarks()">Semak Markah</button>
+            
+            <div id="student-error" class="error-msg"></div>
 
-<button class="btn-submit" onclick="checkStudentMarks()">Semak Markah</button>
+            <div id="student-result" class="result-box">
+                <div class="result-header" id="res-student-info"></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Peperiksaan</th>
+                            <th>Markah</th>
+                            <th>Gred</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-table-body"></tbody>
+                </table>
+            </div>
+        </div>
 
-<div id="student-error" class="error-msg"></div>
+        <!-- Section Guru -->
+        <div id="section-guru" class="card">
+            <h2>Log Masuk Guru</h2>
+            <hr style="margin: 15px 0;"><br>
 
-<div id="student-result" class="result-box">
-<div class="result-header" id="res-student-info"></div>
-<table>
-<thead>
-<tr>
-<th>Peperiksaan</th>
-<th>Markah</th>
-<th>Gred</th>
-</tr>
-</thead>
-<tbody id="student-table-body"></tbody>
-</table>
-</div>
-</div>
+            <div id="teacher-login-form">
+                <div class="form-group">
+                    <label for="teacher-code">Masukkan Kod Sulit Guru:</label>
+                    <input type="password" id="teacher-code" placeholder="Sila masukkan kod sulit">
+                </div>
+                <button class="btn-submit" onclick="teacherLogin()">Log Masuk</button>
+                <div id="teacher-error" class="error-msg"></div>
+            </div>
 
-<!-- Section Guru -->
-<div id="section-guru" class="card">
-<h2>Log Masuk Guru</h2>
-<hr style="margin: 15px 0;"><br>
+            <div id="teacher-dashboard" style="display: none;">
+                <h3>Dashboard Analisis Guru</h3>
+                <p>Status: <span style="color: green; font-weight: bold;">Log Masuk Berjaya</span></p>
+                <button class="btn-submit" style="background-color: #7f8c8d; margin-top: 10px; width: auto; padding: 6px 15px;" onclick="teacherLogout()">Log Keluar</button>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="class-filter">Tapis Mengikut Kelas:</label>
+                    <select id="class-filter" onchange="renderTeacherData()">
+                        <option value="ALL">Semua Kelas</option>
+                        <option value="4 ERIS">4 ERIS</option>
+                        <option value="4 PLUTO">4 PLUTO</option>
+                        <option value="5 ERIS">5 ERIS</option>
+                    </select>
+                </div>
 
-<div id="teacher-login-form">
-<div class="form-group">
-<label for="teacher-code">Masukkan Kod Sulit Guru:</label>
-<input type="password" id="teacher-code" placeholder="Sila masukkan kod access">
-</div>
-<button class="btn-submit" onclick="teacherLogin()">Log Masuk</button>
-<div id="teacher-error" class="error-msg"></div>
-</div>
+                <div style="overflow-x:auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Bil</th>
+                                <th>Nama Pelajar</th>
+                                <th>Kelas</th>
+                                <th>PPT T4</th>
+                                <th>PAT T4</th>
+                                <th>PPT</th>
+                                <th>SPMC</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teacher-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div id="teacher-dashboard" style="display: none;">
-<h3>Dashboard Analisis Guru</h3>
-<p>Status: <span style="color: green; font-weight: bold;">Log Masuk Berjaya</span></p>
-<button class="btn-submit" style="background-color: #7f8c8d; margin-top: 10px; width: auto; padding: 6px 15px;" onclick="teacherLogout()">Log Keluar</button>
+    <script>
+        // Pangkalan Data Lengkap daripada fail CSV yang dimuat naik (117 Pelajar)
+        const examDatabase = {
+            "ADELIA BINTI MOHAMAD ANIM": { kelas: "4 ERIS", scores: { "PPT T4": {m:"70", g:"A-"}, "PAT T4": {m:"85", g:"A"} } },
+            "ASHWIN KUMAR A/L VIJAYAKUMAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"75", g:"A-"}, "PAT T4": {m:"71", g:"A-"} } },
+            "CZARA AQILAH BINTI ZAINAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"37", g:"G"}, "PAT T4": {m:"55", g:"C+"} } },
+            "DANIEL DAISUKE BIN JAMIL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"63", g:"B"} } },
+            "DEEVESH A/L KUMARAVEL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"35", g:"G"}, "PAT T4": {m:"41", g:"E"} } },
+            "HAREESS VENKADESH MUNUSAMY": { kelas: "4 ERIS", scores: { "PPT T4": {m:"68", g:"B+"}, "PAT T4": {m:"63", g:"B"} } },
+            "HARITH HAIKAL BIN ISMAIL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"49", g:"D"}, "PAT T4": {m:"44", g:"E"} } },
+            "IZZAH FARZANA BINTI NOR HAMIZI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"64", g:"B"}, "PAT T4": {m:"57", g:"C+"} } },
+            "IZZQALEESYA BINTI AZRULNAIM": { kelas: "4 ERIS", scores: { "PPT T4": {m:"56", g:"C+"}, "PAT T4": {m:"59", g:"C+"} } },
+            "KAVINES A/L KRISHNA KUMAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"51", g:"C"} } },
+            "KHAULAH HUMAIRA BINTI AHMAD FATHI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"66", g:"B+"}, "PAT T4": {m:"88", g:"A"} } },
+            "LISA AINUR INSYIRAH BINTI HARUN ALRASHID": { kelas: "4 ERIS", scores: { "PPT T4": {m:"56", g:"C+"}, "PAT T4": {m:"59", g:"C+"} } },
+            "MUHAMAD AR RAYYAN BIN RAZALI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"61", g:"B"} } },
+            "MUHAMAD MIRZARIEF BIN MARBAWI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"80", g:"A"}, "PAT T4": {m:"71", g:"A-"} } },
+            "MUHAMAD SYAHMI BIN ROZAIDI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"53", g:"C"}, "PAT T4": {m:"62", g:"B"} } },
+            "MUHAMMAD AFIQ DARWISH BIN HAIRUL ANUAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"61", g:"B"}, "PAT T4": {m:"70", g:"A-"} } },
+            "MUHAMMAD ALIFF ZARIF BIN MOHD FAIZAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"66", g:"B+"}, "PAT T4": {m:"85", g:"A"} } },
+            "MUHAMMAD AMIN BIN ZAINAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"56", g:"C+"} } },
+            "MUHAMMAD AQIL DANIAL BIN AZMAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"62", g:"B"}, "PAT T4": {m:"58", g:"C+"} } },
+            "MUHAMMAD AQIL FAKHRULLAH BIN ABU BAKAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"55", g:"C+"}, "PAT T4": {m:"62", g:"B"} } },
+            "MUHAMMAD AZAMUDDIN BIN MOHD FAIZAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"73", g:"A-"}, "PAT T4": {m:"75", g:"A-"} } },
+            "MUHAMMAD DANISH HAFIY BIN MOHD ZAMRI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"71", g:"A-"}, "PAT T4": {m:"71", g:"A-"} } },
+            "MUHAMMAD FARIS HAZIQ BIN MOHD FAUZI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"64", g:"B"}, "PAT T4": {m:"59", g:"C+"} } },
+            "MUHAMMAD FATHULLAH BIN ROSLAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"63", g:"B"}, "PAT T4": {m:"67", g:"B+"} } },
+            "MUHAMMAD HAFIY ZIQRI BIN MOHD HAIRIL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"54", g:"C"}, "PAT T4": {m:"58", g:"C+"} } },
+            "MUHAMMAD HAZIQ HAKIMI BIN MOHD ZAHIR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"48", g:"D"}, "PAT T4": {m:"52", g:"C"} } },
+            "MUHAMMAD IZZAT BIN ZAHARI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"36", g:"G"}, "PAT T4": {m:"51", g:"C"} } },
+            "MUHAMMAD ZHARIF BIN ZULKIFLI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"55", g:"C+"}, "PAT T4": {m:"60", g:"B"} } },
+            "NABILAH BINTI MOHD NAZRI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"71", g:"A-"}, "PAT T4": {m:"79", g:"A-"} } },
+            "NUR AINAA MARDHIAH BINTI ROSLAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"64", g:"B"}, "PAT T4": {m:"64", g:"B"} } },
+            "NUR ALYA BATRISYIA BINTI MOHD SHAH": { kelas: "4 ERIS", scores: { "PPT T4": {m:"71", g:"A-"}, "PAT T4": {m:"82", g:"A"} } },
+            "NUR AMEERA SYAZWANI BINTI AZMAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"54", g:"C"}, "PAT T4": {m:"60", g:"B"} } },
+            "NUR AUNI BATRISYIA BINTI MOHD FAIZAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"70", g:"A-"}, "PAT T4": {m:"76", g:"A-"} } },
+            "NUR DLIYA ZAFIRAH BINTI AZMAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"63", g:"B"}, "PAT T4": {m:"69", g:"B+"} } },
+            "NUR FATIN NADIRAH BINTI MOHD RIZAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"51", g:"C"}, "PAT T4": {m:"57", g:"C+"} } },
+            "NUR IRIS SYAZWANI BINTI ZULKIFLI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"66", g:"B+"}, "PAT T4": {m:"70", g:"A-"} } },
+            "NUR QISTINA BALQIS BINTI MOHD ZAKI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"61", g:"B"}, "PAT T4": {m:"67", g:"B+"} } },
+            "NUR SYUHADA BINTI AZMAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"49", g:"D"}, "PAT T4": {m:"55", g:"C+"} } },
+            "PUTRI BALQIS BINTI MOHD FAIZAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"67", g:"B+"}, "PAT T4": {m:"73", g:"A-"} } },
+            "ADLINA IMANINA BINTI AHMAD NURFAIRUZ": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"14", g:"G"}, "PAT T4": {m:"19", g:"G"} } },
+            "NUR RAYYANA NAJIHA BINTI MOHD REDZUAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"16", g:"G"}, "PAT T4": {m:"13", g:"G"} } },
+            "AHMAD ASHRAF FAHRI BIN ABD.KADIR": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"27", g:"G"}, "PAT T4": {m:"35", g:"G"} } },
+            "PUTERA ANAS HAKIMIE BIN MOHD SHAHRIZAL": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"23", g:"G"}, "PAT T4": {m:"13", g:"G"} } },
+            "DHYA ZULAIKHA BINTI ZULKIFEE": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"8", g:"G"} } },
+            "QISTIL HANNAN BINTI MOHD FAUZI": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"35", g:"G"}, "PAT T4": {m:"56", g:"C+"} } },
+            "HAFIZUL SHAH BIN ZULAMIRUL SHAH": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"11", g:"G"}, "PAT T4": {m:"19", g:"G"} } },
+            "RABI'ATUL' ADAWIYYAH BINTI MD NOR FAZLI": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"11", g:"G"}, "PAT T4": {m:"11", g:"G"} } },
+            "MOHAMAD LUQMAN HAKIM BIN ABDULLAH": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"19", g:"G"}, "PAT T4": {m:"14", g:"G"} } },
+            "SARAH BINTI KHIDZIR": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"22", g:"G"}, "PAT T4": {m:"25", g:"G"} } },
+            "MUHAMAD ZIEDAN BIN HAIRUNAJIB": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"26", g:"G"}, "PAT T4": {m:"25", g:"G"} } },
+            "UMI AINA MADHIHAH BINTI ABDULLAH": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"7", g:"G"}, "PAT T4": {m:"13", g:"G"} } },
+            "MUHAMMAD ADAM HARITH BIN MUHAMMAD NOOR": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"41", g:"E"}, "PAT T4": {m:"40", g:"E"} } },
+            "MUHAMMAD ADIB RAHIMI BIN MOHD SHAHRIZAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"22", g:"G"}, "PAT T4": {m:"24", g:"G"} } },
+            "AHMAD NAIM SYAUQI BIN MOHD SUHAIMI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"27", g:"G"}, "PAT T4": {m:"29", g:"G"}, "PPT": {m:"36", g:"G"}, "SPMC": {m:"38", g:"G"} } },
+            "AIMI IZZATI BINTI ZULKARNAEN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"28", g:"G"}, "PAT T4": {m:"22", g:"G"}, "PPT": {m:"46", g:"D"}, "SPMC": {m:"56", g:"C+"} } },
+            "AMIEN HAQIMIE BIN MOHD AZELAN": { kelas: "5 ERIS", scores: { "PAT T4": {m:"52", g:"C"}, "PPT": {m:"74", g:"A-"}, "SPMC": {m:"72", g:"A-"} } },
+            "ARESSA IRDINA BINTI AREMAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"34", g:"G"}, "PAT T4": {m:"29", g:"G"}, "PPT": {m:"39", g:"G"}, "SPMC": {m:"59", g:"C+"} } },
+            "ARIFF MAHDI FIKRI BIN ZAINUDIN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"28", g:"G"}, "PAT T4": {m:"34", g:"G"}, "PPT": {m:"53", g:"C"}, "SPMC": {m:"68", g:"B+"} } },
+            "HARRIS A/L MURUGAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"40", g:"E"}, "PAT T4": {m:"31", g:"G"}, "PPT": {m:"46", g:"D"}, "SPMC": {m:"51", g:"C"} } },
+            "MUHAMMAD AARON DANIEL BIN MUHAMMAD AMIR DANES": { kelas: "5 ERIS", scores: { "PPT T4": {m:"22", g:"G"}, "PAT T4": {m:"24", g:"G"}, "PPT": {m:"51", g:"C"}, "SPMC": {m:"60", g:"B"} } },
+            "MUHAMMAD AFIQ SIDDIQ BIN MOHD RASHID": { kelas: "5 ERIS", scores: { "PPT T4": {m:"32", g:"G"}, "PAT T4": {m:"32", g:"G"}, "PPT": {m:"64", g:"B"}, "SPMC": {m:"71", g:"A-"} } },
+            "MUHAMMAD AIDIL BIN ABDUL GHANI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"32", g:"G"}, "PAT T4": {m:"37", g:"G"}, "PPT": {m:"51", g:"C"}, "SPMC": {m:"48", g:"D"} } },
+            "MUHAMMAD ASYRAF AIMAN BIN JALANI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"49", g:"D"}, "PAT T4": {m:"43", g:"E"}, "PPT": {m:"67", g:"B+"}, "SPMC": {m:"66", g:"B+"} } },
+            "MUHAMMAD HAIKAL HAZIM BIN MUHAMMAD HAFIDZ": { kelas: "5 ERIS", scores: { "PPT T4": {m:"34", g:"G"}, "PAT T4": {m:"31", g:"G"}, "PPT": {m:"32", g:"G"}, "SPMC": {m:"45", g:"D"} } },
+            "MUHAMMAD HASAN QADRI BIN ZAFAR IQBAL": { kelas: "5 ERIS", scores: { "PPT T4": {m:"28", g:"G"}, "PAT T4": {m:"29", g:"G"}, "PPT": {m:"40", g:"E"}, "SPMC": {m:"51", g:"C"} } },
+            "MUHAMMAD HAZIM BIN MOHD KHOIRUSSHAFI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"29", g:"G"}, "PAT T4": {m:"38", g:"G"}, "PPT": {m:"59", g:"C+"}, "SPMC": {m:"54", g:"C"} } },
+            "MUHAMMAD IRFAN BIN MOHD HAFIZUWAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"37", g:"G"}, "PAT T4": {m:"40", g:"E"}, "PPT": {m:"57", g:"C+"}, "SPMC": {m:"59", g:"C+"} } }
+        };
 
-<div class="form-group" style="margin-top: 20px;">
-<label for="class-filter">Tapis Mengikut Kelas:</label>
-<select id="class-filter" onchange="renderTeacherData()">
-<option value="ALL">Semua Kelas</option>
-<option value="4 ERIS">4 ERIS</option>
-<option value="4 PLUTO">4 PLUTO</option>
-<option value="5 ERIS">5 ERIS</option>
-</select>
-</div>
+        const SECRET_TEACHER_CODE = "1449";
 
-<div style="overflow-x:auto;">
-<table>
-<thead>
-<tr>
-<th>Bil</th>
-<th>Nama Pelajar</th>
-<th>Kelas</th>
-<th>PPT T4</th>
-<th>PAT T4</th>
-<th>PPT</th>
-<th>SPMC</th>
-</tr>
-</thead>
-<tbody id="teacher-table-body"></tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
 
-<script>
-// Data Terbenam daripada fail analisis markah yang dimuat naik
-const examDatabase = {
-"ADELIA BINTI MOHAMAD ANIM": { kelas: "4 ERIS", scores: { "PPT T4": {m:"70", g:"A-"}, "PAT T4": {m:"85", g:"A"} } },
-"ASHWIN KUMAR A/L VIJAYAKUMAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"75", g:"A-"}, "PAT T4": {m:"71", g:"A-"} } },
-"CZARA AQILAH BINTI ZAINAN": { kelas: "4 ERIS", scores: { "PPT T4": {m:"37", g:"G"}, "PAT T4": {m:"55", g:"C+"} } },
-"DANIEL DAISUKE BIN JAMIL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"63", g:"B"} } },
-"DEEVESH A/L KUMARAVEL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"35", g:"G"}, "PAT T4": {m:"41", g:"E"} } },
-"HAREESS VENKADESH MUNUSAMY": { kelas: "4 ERIS", scores: { "PPT T4": {m:"68", g:"B+"}, "PAT T4": {m:"63", g:"B"} } },
-"HARITH HAIKAL BIN ISMAIL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"49", g:"D"}, "PAT T4": {m:"44", g:"E"} } },
-"IZZAH FARZANA BINTI NOR HAMIZI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"64", g:"B"}, "PAT T4": {m:"57", g:"C+"} } },
-"IZZQALEESYA BINTI AZRULNAIM": { kelas: "4 ERIS", scores: { "PPT T4": {m:"56", g:"C+"}, "PAT T4": {m:"59", g:"C+"} } },
-"KAVINES A/L KRISHNA KUMAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"51", g:"C"} } },
-"KHAULAH HUMAIRA BINTI AHMAD FATHI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"66", g:"B+"}, "PAT T4": {m:"88", g:"A"} } },
-"AHMAD NAIM SYAUQI BIN MOHD SUHAIMI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"27", g:"G"}, "PAT T4": {m:"29", g:"G"}, "PPT": {m:"36", g:"G"}, "SPMC": {m:"38", g:"G"} } },
-"AIMI IZZATI BINTI ZULKARNAEN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"28", g:"G"}, "PAT T4": {m:"22", g:"G"}, "PPT": {m:"46", g:"D"}, "SPMC": {m:"56", g:"C+"} } },
-"AMIEN HAQIMIE BIN MOHD AZELAN": { kelas: "5 ERIS", scores: { "PAT T4": {m:"52", g:"C"}, "PPT": {m:"74", g:"A-"}, "SPMC": {m:"72", g:"A-"} } },
-"ARESSA IRDINA BINTI AREMAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"34", g:"G"}, "PAT T4": {m:"29", g:"G"}, "PPT": {m:"39", g:"G"}, "SPMC": {m:"59", g:"C+"} } },
-"ARIFF MAHDI FIKRI BIN ZAINUDIN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"28", g:"G"}, "PAT T4": {m:"34", g:"G"}, "PPT": {m:"53", g:"C"}, "SPMC": {m:"68", g:"B+"} } },
-"ADLINA IMANINA BINTI AHMAD NURFAIRUZ": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"14", g:"G"}, "PAT T4": {m:"19", g:"G"} } },
-"NUR RAYYANA NAJIHA BINTI MOHD REDZUAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"16", g:"G"}, "PAT T4": {m:"13", g:"G"} } },
-"AHMAD ASHRAF FAHRI BIN ABD.KADIR": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"27", g:"G"}, "PAT T4": {m:"35", g:"G"} } }
-};
+            if (tab === 'pelajar') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('section-pelajar').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('section-guru').classList.add('active');
+            }
+        }
 
-// Kod Sulit Guru (Diperingkat Kod Sahaja)
-const SECRET_TEACHER_CODE = "1449";
+        function checkStudentMarks() {
+            const inputName = document.getElementById('student-name').value.trim().toUpperCase();
+            const selectedExam = document.getElementById('exam-select').value;
+            const errorDiv = document.getElementById('student-error');
+            const resultBox = document.getElementById('student-result');
+            const tbody = document.getElementById('student-table-body');
+            const infoDiv = document.getElementById('res-student-info');
 
-function switchTab(tab) {
-document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+            errorDiv.innerText = "";
+            resultBox.style.display = "none";
+            tbody.innerHTML = "";
 
-if (tab === 'pelajar') {
-document.querySelectorAll('.tab-btn')[0].classList.add('active');
-document.getElementById('section-pelajar').classList.add('active');
-} else {
-document.querySelectorAll('.tab-btn')[1].classList.add('active');
-document.getElementById('section-guru').classList.add('active');
-}
-}
+            if (!inputName) {
+                errorDiv.innerText = "Sila masukkan nama penuh anda.";
+                return;
+            }
 
-function checkStudentMarks() {
-const inputName = document.getElementById('student-name').value.trim().toUpperCase();
-const selectedExam = document.getElementById('exam-select').value;
-const errorDiv = document.getElementById('student-error');
-const resultBox = document.getElementById('student-result');
-const tbody = document.getElementById('student-table-body');
-const infoDiv = document.getElementById('res-student-info');
+            const student = examDatabase[inputName];
 
-errorDiv.innerText = "";
-resultBox.style.display = "none";
-tbody.innerHTML = "";
+            if (!student) {
+                errorDiv.innerText = "Rekod pelajar tidak dijumpai. Sila pastikan ejaan nama penuh (huruf besar) mengikut kad pengenalan.";
+                return;
+            }
 
-if (!inputName) {
-errorDiv.innerText = "Sila masukkan nama penuh anda.";
-return;
-}
+            infoDiv.innerText = `NAMA: ${inputName} | KELAS: ${student.kelas}`;
+            let hasData = false;
 
-const student = examDatabase[inputName];
+            const examsToCheck = selectedExam === 'ALL' ? ['PPT T4', 'PAT T4', 'PPT', 'SPMC'] : [selectedExam];
 
-if (!student) {
-errorDiv.innerText = "Rekod pelajar tidak dijumpai. Sila pastikan ejaan nama penuh (huruf besar) mengikut kad pengenalan.";
-return;
-}
+            examsToCheck.forEach(examKey => {
+                if (student.scores[examKey]) {
+                    hasData = true;
+                    const row = `<tr>
+                        <td><strong>${examKey}</strong></td>
+                        <td>${student.scores[examKey].m}</td>
+                        <td><span class="grade-badge">${student.scores[examKey].g}</span></td>
+                    </tr>`;
+                    tbody.innerHTML += row;
+                }
+            });
 
-infoDiv.innerText = NAMA: ${inputName} | KELAS: ${student.kelas};
-let hasData = false;
+            if (!hasData) {
+                errorDiv.innerText = `Tiada rekod markah bagi peperiksaan: ${selectedExam}`;
+                return;
+            }
 
-const examsToCheck = selectedExam === 'ALL' ? ['PPT T4', 'PAT T4', 'PPT', 'SPMC'] : [selectedExam];
+            resultBox.style.display = "block";
+        }
 
-examsToCheck.forEach(examKey => {
-if (student.scores[examKey]) {
-hasData = true;
-const row = <tr&gt; &lt;td&gt;&lt;strong&gt;${examKey}</strong></td>
-<td>${student.scores[examKey].m !== '' ? student.scores[examKey].m : '-'}&lt;/td&gt; &lt;td&gt;&lt;span class="grade-badge"&gt;${student.scores[examKey].g || '-'}</span></td>
-</tr>`;
-tbody.innerHTML += row;
-}
-});
+        function teacherLogin() {
+            const codeInput = document.getElementById('teacher-code').value;
+            const errorDiv = document.getElementById('teacher-error');
 
-if (!hasData) {
-errorDiv.innerText = Tiada rekod markah bagi peperiksaan:${selectedExam}`;
-return;
-}
+            if (codeInput === SECRET_TEACHER_CODE) {
+                errorDiv.innerText = "";
+                document.getElementById('teacher-login-form').style.display = "none";
+                document.getElementById('teacher-dashboard').style.display = "block";
+                renderTeacherData();
+            } else {
+                errorDiv.innerText = "Kod sulit tidak sah! Sila cuba lagi.";
+            }
+        }
 
-resultBox.style.display = "block";
-}
+        function teacherLogout() {
+            document.getElementById('teacher-code').value = "";
+            document.getElementById('teacher-login-form').style.display = "block";
+            document.getElementById('teacher-dashboard').style.display = "none";
+        }
 
-function teacherLogin() {
-const codeInput = document.getElementById('teacher-code').value;
-const errorDiv = document.getElementById('teacher-error');
+        function renderTeacherData() {
+            const classFilter = document.getElementById('class-filter').value;
+            const tbody = document.getElementById('teacher-table-body');
+            tbody.innerHTML = "";
 
-if (codeInput === SECRET_TEACHER_CODE) {
-errorDiv.innerText = "";
-document.getElementById('teacher-login-form').style.display = "none";
-document.getElementById('teacher-dashboard').style.display = "block";
-renderTeacherData();
-} else {
-errorDiv.innerText = "Kod sulit tidak sah! Sila cuba lagi.";
-}
-}
+            let index = 1;
+            for (const [nama, info] of Object.entries(examDatabase)) {
+                if (classFilter === 'ALL' || info.kelas === classFilter) {
+                    const getScoreStr = (exam) => {
+                        if (info.scores[exam]) {
+                            return `${info.scores[exam].m} (${info.scores[exam].g})`;
+                        }
+                        return '-';
+                    };
 
-function teacherLogout() {
-document.getElementById('teacher-code').value = "";
-document.getElementById('teacher-login-form').style.display = "block";
-document.getElementById('teacher-dashboard').style.display = "none";
-}
-
-function renderTeacherData() {
-const classFilter = document.getElementById('class-filter').value;
-const tbody = document.getElementById('teacher-table-body');
-tbody.innerHTML = "";
-
-let index = 1;
-for (const [nama, info] of Object.entries(examDatabase)) {
-if (classFilter === 'ALL' || info.kelas === classFilter) {
-const row = <tr&gt; &lt;td&gt;${index++}</td>
-<td style="text-align: left;">${nama}&lt;/td&gt; &lt;td&gt;${info.kelas}</td>
-<td>${info.scores['PPT T4'] ? info.scores['PPT T4'].m + ' (' + info.scores['PPT T4'].g + ')' : '-'}&lt;/td&gt; &lt;td&gt;${info.scores['PAT T4'] ? info.scores['PAT T4'].m + ' (' + info.scores['PAT T4'].g + ')' : '-'}</td>
-<td>${info.scores['PPT'] ? info.scores['PPT'].m + ' (' + info.scores['PPT'].g + ')' : '-'}&lt;/td&gt; &lt;td&gt;${info.scores['SPMC'] ? info.scores['SPMC'].m + ' (' + info.scores['SPMC'].g + ')' : '-'}&lt;/td&gt; &lt;/tr>;
-tbody.innerHTML += row;
-}
-}
-}
-</script>
+                    const row = `<tr>
+                        <td>${index++}</td>
+                        <td style="text-align: left;">${nama}</td>
+                        <td>${info.kelas}</td>
+                        <td>${getScoreStr('PPT T4')}</td>
+                        <td>${getScoreStr('PAT T4')}</td>
+                        <td>${getScoreStr('PPT')}</td>
+                        <td>${getScoreStr('SPMC')}</td>
+                    </tr>`;
+                    tbody.innerHTML += row;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
