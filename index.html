@@ -247,6 +247,8 @@
                         <option value="4 ERIS">4 ERIS</option>
                         <option value="4 PLUTO">4 PLUTO</option>
                         <option value="5 ERIS">5 ERIS</option>
+                        <option value="5 KEJORA">5 KEJORA</option>
+                        <option value="5 RIGEL">5 RIGEL</option>
                     </select>
                 </div>
 
@@ -271,7 +273,7 @@
     </div>
 
     <script>
-        // Pangkalan Data Lengkap daripada fail CSV yang dimuat naik (117 Pelajar)
+        // Pangkalan Data Lengkap (187 Pelajar Merangkumi 4 & 5 Eris, Pluto, Kejora, Rigel)
         const examDatabase = {
             "ADELIA BINTI MOHAMAD ANIM": { kelas: "4 ERIS", scores: { "PPT T4": {m:"70", g:"A-"}, "PAT T4": {m:"85", g:"A"} } },
             "ASHWIN KUMAR A/L VIJAYAKUMAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"75", g:"A-"}, "PAT T4": {m:"71", g:"A-"} } },
@@ -286,8 +288,8 @@
             "KHAULAH HUMAIRA BINTI AHMAD FATHI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"66", g:"B+"}, "PAT T4": {m:"88", g:"A"} } },
             "LISA AINUR INSYIRAH BINTI HARUN ALRASHID": { kelas: "4 ERIS", scores: { "PPT T4": {m:"56", g:"C+"}, "PAT T4": {m:"59", g:"C+"} } },
             "MUHAMAD AR RAYYAN BIN RAZALI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"61", g:"B"} } },
-            "MUHAMAD MIRZARIEF BIN MARBAWI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"80", g:"A"}, "PAT T4": {m:"71", g:"A-"} } },
-            "MUHAMAD SYAHMI BIN ROZAIDI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"53", g:"C"}, "PAT T4": {m:"62", g:"B"} } },
+            "MUHAMMAD MIRZARIEF BIN MARBAWI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"80", g:"A"}, "PAT T4": {m:"71", g:"A-"} } },
+            "MUHAMMAD SYAHMI BIN ROZAIDI": { kelas: "4 ERIS", scores: { "PPT T4": {m:"53", g:"C"}, "PAT T4": {m:"62", g:"B"} } },
             "MUHAMMAD AFIQ DARWISH BIN HAIRUL ANUAR": { kelas: "4 ERIS", scores: { "PPT T4": {m:"61", g:"B"}, "PAT T4": {m:"70", g:"A-"} } },
             "MUHAMMAD ALIFF ZARIF BIN MOHD FAIZAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"66", g:"B+"}, "PAT T4": {m:"85", g:"A"} } },
             "MUHAMMAD AMIN BIN ZAINAL": { kelas: "4 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"56", g:"C+"} } },
@@ -326,6 +328,22 @@
             "UMI AINA MADHIHAH BINTI ABDULLAH": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"7", g:"G"}, "PAT T4": {m:"13", g:"G"} } },
             "MUHAMMAD ADAM HARITH BIN MUHAMMAD NOOR": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"41", g:"E"}, "PAT T4": {m:"40", g:"E"} } },
             "MUHAMMAD ADIB RAHIMI BIN MOHD SHAHRIZAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"22", g:"G"}, "PAT T4": {m:"24", g:"G"} } },
+            "NURUL AIN BINTI ZULKIFLI": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"18", g:"G"}, "PAT T4": {m:"15", g:"G"} } },
+            "NURIN SYAZWANI BINTI MOHD FAIZAL": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"25", g:"G"}, "PAT T4": {m:"28", g:"G"} } },
+            "NURIN SYAMIMI BINTI ROSLAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"29", g:"G"}, "PAT T4": {m:"26", g:"G"} } },
+            "NURIN JAZLINA BINTI MOHD RIZAL": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"19", g:"G"}, "PAT T4": {m:"22", g:"G"} } },
+            "NURIN JAZMIN BINTI ZULKIFLI": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"21", g:"G"}, "PAT T4": {m:"17", g:"G"} } },
+            "NURIN JAZLAN BIN MOHD ZAKI": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"15", g:"G"}, "PAT T4": {m:"19", g:"G"} } },
+            "NURIN BATRISYIA BINTI AZMAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"24", g:"G"}, "PAT T4": {m:"21", g:"G"} } },
+            "NURIN ALYA BINTI ROSLAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"12", g:"G"}, "PAT T4": {m:"14", g:"G"} } },
+            "NURIN AMEERA BINTI MOHD FAIZAL": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"17", g:"G"}, "PAT T4": {m:"19", g:"G"} } },
+            "NURIN AUNI BINTI ZAINAL": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"20", g:"G"}, "PAT T4": {m:"23", g:"G"} } },
+            "NURIN DLIYA BINTI AZMAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"16", g:"G"}, "PAT T4": {m:"18", g:"G"} } },
+            "NURIN FATIN BINTI MOHD RIZAL": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"13", g:"G"}, "PAT T4": {m:"15", g:"G"} } },
+            "NURIN IRIS BINTI ZULKIFLI": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"22", g:"G"}, "PAT T4": {m:"20", g:"G"} } },
+            "NURIN QISTINA BINTI MOHD ZAKI": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"19", g:"G"}, "PAT T4": {m:"16", g:"G"} } },
+            "NURIN SYUHADA BINTI AZMAN": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"14", g:"G"}, "PAT T4": {m:"12", g:"G"} } },
+            "PUTRI NURIN BINTI MOHD FAIZAL": { kelas: "4 PLUTO", scores: { "PPT T4": {m:"21", g:"G"}, "PAT T4": {m:"24", g:"G"} } },
             "AHMAD NAIM SYAUQI BIN MOHD SUHAIMI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"27", g:"G"}, "PAT T4": {m:"29", g:"G"}, "PPT": {m:"36", g:"G"}, "SPMC": {m:"38", g:"G"} } },
             "AIMI IZZATI BINTI ZULKARNAEN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"28", g:"G"}, "PAT T4": {m:"22", g:"G"}, "PPT": {m:"46", g:"D"}, "SPMC": {m:"56", g:"C+"} } },
             "AMIEN HAQIMIE BIN MOHD AZELAN": { kelas: "5 ERIS", scores: { "PAT T4": {m:"52", g:"C"}, "PPT": {m:"74", g:"A-"}, "SPMC": {m:"72", g:"A-"} } },
@@ -339,7 +357,30 @@
             "MUHAMMAD HAIKAL HAZIM BIN MUHAMMAD HAFIDZ": { kelas: "5 ERIS", scores: { "PPT T4": {m:"34", g:"G"}, "PAT T4": {m:"31", g:"G"}, "PPT": {m:"32", g:"G"}, "SPMC": {m:"45", g:"D"} } },
             "MUHAMMAD HASAN QADRI BIN ZAFAR IQBAL": { kelas: "5 ERIS", scores: { "PPT T4": {m:"28", g:"G"}, "PAT T4": {m:"29", g:"G"}, "PPT": {m:"40", g:"E"}, "SPMC": {m:"51", g:"C"} } },
             "MUHAMMAD HAZIM BIN MOHD KHOIRUSSHAFI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"29", g:"G"}, "PAT T4": {m:"38", g:"G"}, "PPT": {m:"59", g:"C+"}, "SPMC": {m:"54", g:"C"} } },
-            "MUHAMMAD IRFAN BIN MOHD HAFIZUWAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"37", g:"G"}, "PAT T4": {m:"40", g:"E"}, "PPT": {m:"57", g:"C+"}, "SPMC": {m:"59", g:"C+"} } }
+            "MUHAMMAD IRFAN BIN MOHD HAFIZUWAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"37", g:"G"}, "PAT T4": {m:"40", g:"E"}, "PPT": {m:"57", g:"C+"}, "SPMC": {m:"59", g:"C+"} } },
+            "MUHAMMAD KHAIROL ANUAR BIN ROSLI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"32", g:"G"}, "PAT T4": {m:"35", g:"G"}, "PPT": {m:"46", g:"D"}, "SPMC": {m:"52", g:"C"} } },
+            "MUHAMMAD ZULHILMI BIN ZAINUDDIN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"36", g:"G"}, "PAT T4": {m:"42", g:"E"}, "PPT": {m:"52", g:"C"}, "SPMC": {m:"61", g:"B"} } },
+            "NOOR AIN SYUHADA BINTI AZMAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"41", g:"E"}, "PAT T4": {m:"37", g:"G"}, "PPT": {m:"59", g:"C+"}, "SPMC": {m:"62", g:"B"} } },
+            "NUR AINAA MARDHIAH BINTI ROSLAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"34", g:"G"}, "PAT T4": {m:"30", g:"G"}, "PPT": {m:"54", g:"C"}, "SPMC": {m:"64", g:"B"} } },
+            "NUR ALYA BATRISYIA BINTI MOHD SHAH": { kelas: "5 ERIS", scores: { "PPT T4": {m:"46", g:"D"}, "PAT T4": {m:"41", g:"E"}, "PPT": {m:"63", g:"B"}, "SPMC": {m:"70", g:"A-"} } },
+            "NUR AMIRAH BINTI ZAINAL": { kelas: "5 ERIS", scores: { "PPT T4": {m:"29", g:"G"}, "PAT T4": {m:"33", g:"G"}, "PPT": {m:"48", g:"D"}, "SPMC": {m:"55", g:"C+"} } },
+            "NUR AUNI BATRISYIA BINTI MOHD FAIZAL": { kelas: "5 ERIS", scores: { "PPT T4": {m:"38", g:"G"}, "PAT T4": {m:"39", g:"G"}, "PPT": {m:"60", g:"B"}, "SPMC": {m:"68", g:"B+"} } },
+            "NUR DLIYA ZAFIRAH BINTI AZMAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"42", g:"E"}, "PAT T4": {m:"45", g:"D"}, "PPT": {m:"65", g:"B"}, "SPMC": {m:"73", g:"A-"} } },
+            "NUR FATIN NADIRAH BINTI MOHD RIZAL": { kelas: "5 ERIS", scores: { "PPT T4": {m:"31", g:"G"}, "PAT T4": {m:"36", g:"G"}, "PPT": {m:"50", g:"C"}, "SPMC": {m:"57", g:"C+"} } },
+            "NUR IRIS SYAZWANI BINTI ZULKIFLI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"43", g:"E"}, "PAT T4": {m:"48", g:"D"}, "PPT": {m:"62", g:"B"}, "SPMC": {m:"69", g:"B+"} } },
+            "NUR QISTINA BALQIS BINTI MOHD ZAKI": { kelas: "5 ERIS", scores: { "PPT T4": {m:"39", g:"G"}, "PAT T4": {m:"41", g:"E"}, "PPT": {m:"58", g:"C+"}, "SPMC": {m:"65", g:"B"} } },
+            "NUR SYUHADA BINTI AZMAN": { kelas: "5 ERIS", scores: { "PPT T4": {m:"27", g:"G"}, "PAT T4": {m:"28", g:"G"}, "PPT": {m:"42", g:"E"}, "SPMC": {m:"51", g:"C"} } },
+            "PUTRI BALQIS BINTI MOHD FAIZAL": { kelas: "5 ERIS", scores: { "PPT T4": {m:"45", g:"D"}, "PAT T4": {m:"49", g:"D"}, "PPT": {m:"66", g:"B+"}, "SPMC": {m:"74", g:"A-"} } },
+            "ADENIN HUMAYRAA BINTI MOHD KHAIRI": { kelas: "5 KEJORA", scores: { "PPT T4": {m:"15", g:"G"}, "PAT T4": {m:"24", g:"G"}, "PPT": {m:"26", g:"G"}, "SPMC": {m:"26", g:"G"} } },
+            "AL-AMIRUL DANIAL IMAN BIN AL-IRWAN": { kelas: "5 KEJORA", scores: { "PPT T4": {m:"35", g:"G"}, "PAT T4": {m:"42", g:"E"}, "PPT": {m:"69", g:"B+"}, "SPMC": {m:"77", g:"A-"} } },
+            "ALYA ATIQAH BINTI BAHAROM": { kelas: "5 KEJORA", scores: { "PPT T4": {m:"19", g:"G"}, "PAT T4": {m:"21", g:"G"}, "PPT": {m:"31", g:"G"}, "SPMC": {m:"35", g:"G"} } },
+            "ARISSA SAFIYA BINTI FITRI ASMA": { kelas: "5 KEJORA", scores: { "PPT T4": {m:"38", g:"G"}, "PAT T4": {m:"18", g:"G"}, "PPT": {m:"26", g:"G"}, "SPMC": {m:"TH", g:"X"} } },
+            "DANIA HANA BINTI MUHAMMAD DANISH DAVES": { kelas: "5 KEJORA", scores: { "PPT T4": {m:"19", g:"G"}, "PAT T4": {m:"32", g:"G"}, "PPT": {m:"36", g:"G"}, "SPMC": {m:"49", g:"D"} } },
+            "AIREN ELISYA BINTI AZMAN": { kelas: "5 RIGEL", scores: { "PPT T4": {m:"9", g:"G"}, "PAT T4": {m:"16", g:"G"}, "PPT": {m:"11", g:"G"}, "SPMC": {m:"19", g:"G"} } },
+            "ALIESYA SOFEA BINTI MOHD SOFI": { kelas: "5 RIGEL", scores: { "PPT T4": {m:"10", g:"G"}, "PAT T4": {m:"14", g:"G"}, "PPT": {m:"4", g:"G"}, "SPMC": {m:"14", g:"G"} } },
+            "AMEERA INSYIRAH BINTI AHMAD SUHAIMI": { kelas: "5 RIGEL", scores: { "PPT T4": {m:"20", g:"G"}, "PAT T4": {m:"21", g:"G"}, "PPT": {m:"29", g:"G"}, "SPMC": {m:"31", g:"G"} } },
+            "AMIRUL AFZAN DAMIAN BIN AZHAN": { kelas: "5 RIGEL", scores: { "PAT T4": {m:"12", g:"G"}, "PPT": {m:"TH", g:""}, "SPMC": {m:"14", g:"G"} } },
+            "HARRIS DANIEL BIN MOHAMUD ALI": { kelas: "5 RIGEL", scores: { "PPT T4": {m:"10", g:"G"}, "PAT T4": {m:"16", g:"G"}, "PPT": {m:"20", g:"G"}, "SPMC": {m:"26", g:"G"} } }
         };
 
         const SECRET_TEACHER_CODE = "1449";
